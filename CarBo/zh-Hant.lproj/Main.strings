@@ -1,0 +1,264 @@
+
+/* Class = "UILabel"; text = "Generl Excess"; ObjectID = "0DL-sa-8AM"; */
+"0DL-sa-8AM.text" = "Generl Excess";
+
+/* Class = "UILabel"; text = "Premium Amount"; ObjectID = "0RX-eN-Mn0"; */
+"0RX-eN-Mn0.text" = "Premium Amount";
+
+/* Class = "UILabel"; text = " In Process"; ObjectID = "1W0-hB-G4e"; */
+"1W0-hB-G4e.text" = " In Process";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "2We-GR-gyV"; */
+"2We-GR-gyV.placeholder" = "Confirm Password";
+
+/* Class = "UILabel"; text = "Company Name"; ObjectID = "2hE-Ti-qtM"; */
+"2hE-Ti-qtM.text" = "Company Name";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "2tE-0a-gfV"; */
+"2tE-0a-gfV.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Mobile"; ObjectID = "3il-ll-01c"; */
+"3il-ll-01c.placeholder" = "Mobile";
+
+/* Class = "UITextField"; placeholder = "Email ID "; ObjectID = "4um-xm-A1o"; */
+"4um-xm-A1o.placeholder" = "Email ID ";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "5OM-eM-66p"; */
+"5OM-eM-66p.normalTitle" = "Accept";
+
+/* Class = "UILabel"; text = " kdsjfl djslf dsjfl jdslkjf dsjf lsdjf sdljf ldlsjf sdljf dsjflf lsd lsdf ldsjf djfjds fjalfj lsd jdlfjld sjsljf ldsljf lsdl dsjf d    ljlfdls lsdjfl dsl fsdf ldjfj ldsjfjdsfl jsdlf sdfj ldsjfldsjf jlsdfj dlskjf ds dsjflkj dskfj lkdsj  lsdkjf lkjldksjflj dsj jsdf jlsjd jsd sdjfj sldjfl sldfj sdlf sdjlf sldjf sdljflsjlfj sfldslfjldskjl;kjf;kalsj flsdj jsdjf lsjdf lsldfj sdl sdj f lsdjl ksd;lk ksd;k skd; fsdk; fsd;k kds;f ;sd sd ;ksdk;k ; sdkf sd"; ObjectID = "5w0-3X-7KE"; */
+"5w0-3X-7KE.text" = " kdsjfl djslf dsjfl jdslkjf dsjf lsdjf sdljf ldlsjf sdljf dsjflf lsd lsdf ldsjf djfjds fjalfj lsd jdlfjld sjsljf ldsljf lsdl dsjf d    ljlfdls lsdjfl dsl fsdf ldjfj ldsjfjdsfl jsdlf sdfj ldsjfldsjf jlsdfj dlskjf ds dsjflkj dskfj lkdsj  lsdkjf lkjldksjflj dsj jsdf jlsjd jsd sdjfj sldjfl sldfj sdlf sdjlf sldjf sdljflsjlfj sfldslfjldskjl;kjf;kalsj flsdj jsdjf lsjdf lsldfj sdl sdj f lsdjl ksd;lk ksd;k skd; fsdk; fsd;k kds;f ;sd sd ;ksdk;k ; sdkf sd";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "7qG-4K-MhG"; */
+"7qG-4K-MhG.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Excess"; ObjectID = "9Eb-J3-T4Z"; */
+"9Eb-J3-T4Z.text" = "Excess";
+
+/* Class = "UILabel"; text = "Premium Amount"; ObjectID = "9h4-4X-fMP"; */
+"9h4-4X-fMP.text" = "Premium Amount";
+
+/* Class = "UIButton"; normalTitle = "Main VC "; ObjectID = "Aed-AR-ehB"; */
+"Aed-AR-ehB.normalTitle" = "Main VC ";
+
+/* Class = "UILabel"; text = " Discounted Premium"; ObjectID = "BC6-5S-ELp"; */
+"BC6-5S-ELp.text" = " Discounted Premium";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "BPV-Bi-eHo"; */
+"BPV-Bi-eHo.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Body Type"; ObjectID = "Bqf-6z-J9f"; */
+"Bqf-6z-J9f.text" = "Body Type";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "C64-xZ-lS9"; */
+"C64-xZ-lS9.placeholder" = "New Password";
+
+/* Class = "UILabel"; text = "Message Date"; ObjectID = "CTM-mc-cWU"; */
+"CTM-mc-cWU.text" = "Message Date";
+
+/* Class = "UITextField"; placeholder = "Email Id"; ObjectID = "DYI-m8-LcL"; */
+"DYI-m8-LcL.placeholder" = "Email Id";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "FGN-in-Jft"; */
+"FGN-in-Jft.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "FOy-0f-tRh"; */
+"FOy-0f-tRh.text" = "0";
+
+/* Class = "UILabel"; text = "--------------- OR ---------------"; ObjectID = "Frc-Sw-bOr"; */
+"Frc-Sw-bOr.text" = "--------------- OR ---------------";
+
+/* Class = "UILabel"; text = "Policy Title"; ObjectID = "GLf-WS-jUP"; */
+"GLf-WS-jUP.text" = "Policy Title";
+
+/* Class = "UILabel"; text = "TPPD"; ObjectID = "IuN-kq-86L"; */
+"IuN-kq-86L.text" = "TPPD";
+
+/* Class = "UILabel"; text = "Upload Vehical Sheet"; ObjectID = "J4p-6l-FDE"; */
+"J4p-6l-FDE.text" = "Upload Vehical Sheet";
+
+/* Class = "UILabel"; text = "Company Name"; ObjectID = "JAj-LQ-TCq"; */
+"JAj-LQ-TCq.text" = "Company Name";
+
+/* Class = "UILabel"; text = "Premium Amount"; ObjectID = "JJm-zi-hh0"; */
+"JJm-zi-hh0.text" = "Premium Amount";
+
+/* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "JXi-ug-kaV"; */
+"JXi-ug-kaV.normalTitle" = "Verify";
+
+/* Class = "UILabel"; text = "Policy No."; ObjectID = "KaR-kf-hrl"; */
+"KaR-kf-hrl.text" = "Policy No.";
+
+/* Class = "UILabel"; text = "Account No"; ObjectID = "KgH-by-xsq"; */
+"KgH-by-xsq.text" = "Account No";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "L0B-LU-noW"; */
+"L0B-LU-noW.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Enter your verification code which is sent to you on your registered Email ID"; ObjectID = "LG8-RQ-dwy"; */
+"LG8-RQ-dwy.text" = "Enter your verification code which is sent to you on your registered Email ID";
+
+/* Class = "UILabel"; text = "Bank Name"; ObjectID = "Mti-u8-y7i"; */
+"Mti-u8-y7i.text" = "Bank Name";
+
+/* Class = "UIButton"; normalTitle = "Update Password"; ObjectID = "Nqt-dN-mLO"; */
+"Nqt-dN-mLO.normalTitle" = "Update Password";
+
+/* Class = "UILabel"; text = "Comprehensive policy"; ObjectID = "OWJ-5m-ecP"; */
+"OWJ-5m-ecP.text" = "Comprehensive policy";
+
+/* Class = "UILabel"; text = "Model"; ObjectID = "OYS-uf-OIB"; */
+"OYS-uf-OIB.text" = "Model";
+
+/* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "QhM-wu-Ad2"; */
+"QhM-wu-Ad2.normalTitle" = "Verify";
+
+/* Class = "UILabel"; text = "Instant Quote"; ObjectID = "Qqp-nS-yiq"; */
+"Qqp-nS-yiq.text" = "Instant Quote";
+
+/* Class = "UILabel"; text = "Notification Message"; ObjectID = "Qs0-Im-HwH"; */
+"Qs0-Im-HwH.text" = "Notification Message";
+
+/* Class = "UIButton"; normalTitle = "Upload "; ObjectID = "RiC-Z8-2W2"; */
+"RiC-Z8-2W2.normalTitle" = "Upload ";
+
+/* Class = "UIButton"; normalTitle = "Process"; ObjectID = "T6o-Tk-8Dq"; */
+"T6o-Tk-8Dq.normalTitle" = "Process";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "TCf-w0-Ry8"; */
+"TCf-w0-Ry8.text" = "Status";
+
+/* Class = "UILabel"; text = "CAR"; ObjectID = "TP3-ir-Hmp"; */
+"TP3-ir-Hmp.text" = "CAR";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "TuB-6Y-oV5"; */
+"TuB-6Y-oV5.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Year of Manufacture"; ObjectID = "UFr-8W-tSO"; */
+"UFr-8W-tSO.text" = "Year of Manufacture";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "W2R-nm-auX"; */
+"W2R-nm-auX.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "WV3-2A-nuy"; */
+"WV3-2A-nuy.text" = "0";
+
+/* Class = "UILabel"; text = "Enter your registered Email ID "; ObjectID = "WWf-9K-Du5"; */
+"WWf-9K-Du5.text" = "Enter your registered Email ID ";
+
+/* Class = "UILabel"; text = "Limited Time Offer"; ObjectID = "Y9o-Y3-Vo5"; */
+"Y9o-Y3-Vo5.text" = "Limited Time Offer";
+
+/* Class = "UILabel"; text = "Please Bank IN the premium to below account"; ObjectID = "YE5-1X-GSz"; */
+"YE5-1X-GSz.text" = "Please Bank IN the premium to below account";
+
+/* Class = "UILabel"; text = "89759"; ObjectID = "Zlw-Xg-ebg"; */
+"Zlw-Xg-ebg.text" = "89759";
+
+/* Class = "UILabel"; text = "Expiry Date"; ObjectID = "adg-nz-hGC"; */
+"adg-nz-hGC.text" = "Expiry Date";
+
+/* Class = "UIButton"; normalTitle = "Resend Code"; ObjectID = "bMR-eB-0aL"; */
+"bMR-eB-0aL.normalTitle" = "Resend Code";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "cpR-lV-Ohl"; */
+"cpR-lV-Ohl.placeholder" = "Confirm Password";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "dK9-DI-UZJ"; */
+"dK9-DI-UZJ.normalTitle" = "Forgot Password?";
+
+/* Class = "UITextField"; placeholder = "Verification Code"; ObjectID = "dOg-nv-ufJ"; */
+"dOg-nv-ufJ.placeholder" = "Verification Code";
+
+/* Class = "UIButton"; normalTitle = "Resend Code"; ObjectID = "eCc-Gw-cWE"; */
+"eCc-Gw-cWE.normalTitle" = "Resend Code";
+
+/* Class = "UIButton"; normalTitle = "Apple Pay"; ObjectID = "ei5-nr-Px7"; */
+"ei5-nr-Px7.normalTitle" = "Apple Pay";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "f0s-jd-zeo"; */
+"f0s-jd-zeo.normalTitle" = "Log In";
+
+/* Class = "UILabel"; text = "Upload Supplementary Picture"; ObjectID = "fXI-R4-Gaa"; */
+"fXI-R4-Gaa.text" = "Upload Supplementary Picture";
+
+/* Class = "UILabel"; text = "Hatch"; ObjectID = "hei-aj-07m"; */
+"hei-aj-07m.text" = "Hatch";
+
+/* Class = "UILabel"; text = "Processing"; ObjectID = "hnM-Zf-ULf"; */
+"hnM-Zf-ULf.text" = "Processing";
+
+/* Class = "UILabel"; text = "Select Bank "; ObjectID = "hyL-M4-gq7"; */
+"hyL-M4-gq7.text" = "Select Bank ";
+
+/* Class = "UILabel"; text = "Policy Details"; ObjectID = "ige-bK-1MT"; */
+"ige-bK-1MT.text" = "Policy Details";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "jAY-Cb-2fi"; */
+"jAY-Cb-2fi.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Upload Payment Receipt"; ObjectID = "jF7-kp-9HF"; */
+"jF7-kp-9HF.text" = "Upload Payment Receipt";
+
+/* Class = "UILabel"; text = "Notification "; ObjectID = "ktb-6R-CHG"; */
+"ktb-6R-CHG.text" = "Notification ";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "mZv-NP-qZc"; */
+"mZv-NP-qZc.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = " Policy Pdf"; ObjectID = "mlj-NB-nTg"; */
+"mlj-NB-nTg.normalTitle" = " Policy Pdf";
+
+/* Class = "UILabel"; text = "Class"; ObjectID = "o4S-TN-X16"; */
+"o4S-TN-X16.text" = "Class";
+
+/* Class = "UITextField"; placeholder = "Phone"; ObjectID = "oaU-dr-YZ9"; */
+"oaU-dr-YZ9.placeholder" = "Phone";
+
+/* Class = "UILabel"; text = "Engine Capacity (C.C)"; ObjectID = "p9g-h1-6uz"; */
+"p9g-h1-6uz.text" = "Engine Capacity (C.C)";
+
+/* Class = "UILabel"; text = "Insured Vehical Information"; ObjectID = "qYt-si-biq"; */
+"qYt-si-biq.text" = "Insured Vehical Information";
+
+/* Class = "UILabel"; text = "Fees"; ObjectID = "r9p-Uc-u0M"; */
+"r9p-Uc-u0M.text" = "Fees";
+
+/* Class = "UIButton"; normalTitle = "Renwal"; ObjectID = "s8F-FW-pha"; */
+"s8F-FW-pha.normalTitle" = "Renwal";
+
+/* Class = "UIButton"; normalTitle = "Login Via Facebook"; ObjectID = "sTb-t8-rfr"; */
+"sTb-t8-rfr.normalTitle" = "Login Via Facebook";
+
+/* Class = "UIButton"; normalTitle = "Decline"; ObjectID = "stj-Eu-l87"; */
+"stj-Eu-l87.normalTitle" = "Decline";
+
+/* Class = "UILabel"; text = "Supplementary Picture"; ObjectID = "tHC-XP-zrn"; */
+"tHC-XP-zrn.text" = "Supplementary Picture";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "tIF-ql-kvG"; */
+"tIF-ql-kvG.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Update Profile"; ObjectID = "u45-UK-ryZ"; */
+"u45-UK-ryZ.normalTitle" = "Update Profile";
+
+/* Class = "UILabel"; text = "Account no "; ObjectID = "uHI-eO-vm0"; */
+"uHI-eO-vm0.text" = "Account no ";
+
+/* Class = "UILabel"; text = "Third Party Policy"; ObjectID = "uq8-GL-lYH"; */
+"uq8-GL-lYH.text" = "Third Party Policy";
+
+/* Class = "UILabel"; text = "Make"; ObjectID = "vpe-jj-cvG"; */
+"vpe-jj-cvG.text" = "Make";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "xBY-de-iFt"; */
+"xBY-de-iFt.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Theft Loss Excess"; ObjectID = "z8A-gS-785"; */
+"z8A-gS-785.text" = "Theft Loss Excess";
+
+/* Class = "UILabel"; text = "Enter your verification code which is sent to you on your registered Email ID"; ObjectID = "zIk-vu-Ucr"; */
+"zIk-vu-Ucr.text" = "Enter your verification code which is sent to you on your registered Email ID";
+
+/* Class = "UITextField"; placeholder = "Verification Code"; ObjectID = "zm0-DJ-YTT"; */
+"zm0-DJ-YTT.placeholder" = "Verification Code";

@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Shirish Vispute on 20/10/16.
+
+*/
+
+//Menu
+
+"KEY" = "CONTENT";
+"You like?" = "You like?";
+
+"Yesterday you sold %@ apps" = "Yesterday you sold %@ apps";
+
+Home=首頁
+Profile Info=賬戶資料
+Notification=訊息
+Logout=登出
+
+//Profile
+Profile Info=賬戶資料
+Update Profile＝更改資料
+
+//Main Screen
+instant Quote=即時報價
+Policy Details=保單詳情
+Notifications=即時訊息
+
+//Select policy
+Policy Details=保單詳情
+comprehensive Policy= 全保報價
+third party policy= 三保報價
+
+
+//Carbo Agreement
+
+凡經CARBO購買之汽車保險，投保人必須同意及確認符合以下條款，保單方為有效：
+
+請小心閱讀以下資料，本公司會以以下資料提供給各保險代理和保險公司作出核保資料，而這是保費多少的重要基礎，本公司會以以下條款作實；
+投保人必須為車主及首名記名司機；
+所有記名司機年齡介乎18歲至69歲，持有有效駕駛執照及交通違例扣分
+(如超速)不多於9分；
+所有記名司機最近3年出現不多於2次索償，所有索償不涉及人命傷亡及總索償額不多於港幣50,000元；
+投保人及所有記名司機過去3年內未曾涉及危險駕駛、醉酒駕駛、濫藥駕駛或被罰停牌；
+投保人及所有記名司機過去3年內未曾被任何保險公司拒絕續保、取消或附加額外條款；
+投保人同意及確認不會把投保車輛借予未滿25歲 及／或 少於2年駕駛年資之人士使用；
+請小心填寫投保資料，特別是無索償折扣(NCD)，如與事實不符，保險公司有權追加保費或取消保單，
+或會影響索償；
+報價及以上條款或時有更改，本公司有權不作通知。
+
+本人/本公司同意及確認符合以上投保資格及條款，並清楚明白此聲明將構成所投保保單的重要部份。
+
+繼續進行報價 //Continue
+
+//Quotation Form
+Quotation Form=報價表格
+Upload Vehicle Sheet=上載牌簿
+Take a Photo=拍照
+OR＝或
+Insured Vehicle Information=填上汽車資料
+Class=類別
+Private Car＝私家車
+Van＝輕型貨車
+Motorcycle＝電單車
+Make＝車廠
+Model＝型號
+Year of Manufacture＝生產年份
+
+

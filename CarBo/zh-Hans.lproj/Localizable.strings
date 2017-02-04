@@ -1,0 +1,244 @@
+/* 
+  Localizable.strings
+  CarBo
+
+  Created by Shirish Vispute on 20/10/16.
+  Copyright © 2016 Bitware Technologies. All rights reserved.
+*/
+
+"CarBo"="CarBo";
+"Home"="首頁";
+"Profile Info"="賬戶資料";
+"Notification"="訊息";
+"Update Profile"="更改資料";
+"Logout"="登出";
+"About us"="關於我們";
+
+"Name"     =  "姓名";
+"Phone"    =  "电话";
+"Email"    =  "电子邮件";
+"Email Id" =  "Email Id";
+
+"Instant Quote" ="即時報價";
+"Policy Details"="保單詳情";
+"Notifications" ="即時訊息";
+
+"Notification Message"="通知消息";
+"Notification Detail"="通知详细";
+"OK"="好";
+"Policy Details"="保單詳情";
+
+"Comprehensive Policy" = "全保報價";
+"Third Party Policy"   = "三保報價";
+
+"Quotation Form" = "報價表格";
+"Upload Vehicle Sheet" = "上載牌簿";
+"Take a Photo"="拍照";
+"OR" = "或";
+"Insured Vehicle Information" = "填上汽車資料";
+
+"Class" = "類別";
+"Private Car" = "私家車";
+"Van" = "輕型貨車";
+"Motorcycle" = "電單車";
+
+"Make" = "車廠";
+"Model" = "型號";
+"Year of Manufacture" = "生產年份";
+"Engine Capacity"="引擎容量";
+"Body Type"="車身類別";
+
+"Car Owner Information"="車主資料";
+"Applicant Requirement"="申請者要求";
+"Applicant Status"="申請者身份";
+"Individual"="個人";
+"Company"="公司";
+"CONTINUE"="繼續";
+"Continue"="繼續";
+
+"Date Of Birth"="生日日期";
+"Select Date"="選擇";
+"Job Industry"="工作行業";
+"Banking"="銀行";
+
+"Driving Exp(Years)"="牌齡 (年)";
+"Job Position"="職位";
+"Tailer"="文員";
+
+"Coverage Type"="保障範圍";
+
+"Insurance Type"="保障類別";
+"Comprehensive"="全保";
+"Third Party"="三保";
+"Sum Insured"="全保保額";
+
+"Done"="完成";
+"Cancel"="取消";
+"Select Option"="請選擇";
+
+"Supplementary Doc"="後補文件";
+"Supplementary Picture" = "後補文件";
+"Upload Supplementary Picture"="上載文件";
+"Upload"="立刻上載";
+"Supplementary picture uploaded successfully"="成功補交文件";
+
+"Type"="類別";
+"Policy Type"="Policy Type";
+"Policy List"="保單列表";
+"Date"="日期";
+"Manufacture"="車廠";
+"Reg.Mark"="車牌";
+"Policy id"="報價編號";
+
+"Pending"="等待報價中";
+"Processing"="已報價";
+"Completed"="完成";
+"Paid"="已付款";
+
+"Details Of Policy"="保單詳情";
+"Type"="類別";
+"Status"="狀況";
+//"Premium Amount"="折扣價";
+"Premium Amount"="保單保費";
+"Discounted Premium"="折扣價";
+"Limited Time Offer"="限時優惠";
+"Excess"="自負額";
+"General Excess"="一般自負額";
+"Theft Loss Excess"="盜竊自負額";
+"TPPD"="備注";
+"Accept"="接受";
+"Decline"="退回";
+
+"Please select the Terms & Conditions to proceed"="请选择条款和条件以继续";
+"Please Bank IN the premium to below account"="請把保費轉賬到下列戶口";
+"Bank Name"="銀行名稱";
+"Account No"="戶口號碼";
+"Company Name"="戶口名稱";
+"Upload Payment Receipt"="上載入數紙";
+"Renewal Premium"="續保保費";
+
+"Saving Bank Details"="上傳圖片中";
+"Mandatory Fields"="必須填寫";
+"Upload ID Card"="上載身份証";
+"Upload Driving Licence"="上載駕駛執照";
+"Policy Effective Date"="保單生效日期";
+"Address"="住址";
+"Optional Fields"="以下可後補";
+"Upload Address Proof"="上載住址証明";
+"Reg.Mark in Prev Policy"="在上一份保單的車牌";
+"HKID"="身份証號碼";
+"CONFIRM"="完成";
+
+"Email Id"="Email Id";
+"Password"="密碼";
+"Forget Password"="忘記密碼/重新驗證";
+"Login Via Facebook"="Facebook 登入";
+"Login"="登入";
+//"Sign Up"="註冊";
+
+
+"Name"="姓名";
+"Email"="Email";
+"Mobile"="手提電話";
+"Confirm Password"="確認密碼";
+//"Sign Up"="註冊完成";
+"Sign Up"="新註冊";
+
+"Expiry Date"="到期日";
+"Policy no"="報價編號";
+"Premium Amount"="保單保費";
+"Policy PDF"="臨時保單 Cover Note";
+"Renew Policy"="續保";
+"Please select image"="請選擇圖片";
+
+
+"You already paid the policy."="已付款，你很快會收到Cover Note!";
+"Removing Policy"="正在刪除";
+
+
+"Enter your verification code which is sent to your registered email."="Enter your verification code which is sent to your registered email.";
+"Verification Code"="驗證碼";
+"Resend Code"="重發驗證碼";
+
+
+
+"You already paid the policy"="已付款";
+"Due Renewal"="保單將到期";
+"Thank You"="多謝";
+"Are you sure you want to logout?"="要登出";
+"Updating Profile"="更新賬戶資料";
+
+
+"No policy available !"="保單不存在";
+"Loading Bank Details.."="載入銀行資料中";
+"All the fields are mandatory"="請填入所有資料";
+"Saving policy renewal details.."="保存續保保單資料中";
+
+"Something went wrong! please try again later."="有錯誤！ 請遲些再試！";
+"No Network Connection!" = "網路問題！ 請稍候再試！";
+
+"Premium Details"="保費詳情";
+
+"Please wait, uploading images in progress"="請稍候，上載圖片中。";
+
+"Select Option"="請選擇";
+
+"cover note"="我們會盡量在15分鐘內將Cover Note傳送到你的手機Apps內，請留意。辦公時間 星期一至五 9:00-18:00 星期六日及公眾假期休息";
+
+
+"Policy Creation Success Msg" = "我們會盡量在15分鐘內將報價傳送給你。                           辦公時間                                       星期一至五 9:00-18:00 星期六日及公眾假期休息";
+
+"Policy Creation Success Msg"="我們會盡量在15分鐘內將報價傳送給你。                                                                              辦公時間                                            星期一至五 9:00-18:00                                星期六日及公眾假期休息";
+
+
+"Paid policy"="我們會盡量在15分鐘內將Cover Note傳送到你的手機Apps內，請留意。                                                       辦公時間                                           星期一至五 9:00-18:00                                星期六日及公眾假期休息";
+
+
+"Without Cover note1"="我們會盡量在15分鐘內將報價傳送給你。                                                                              辦公時間                                            星期一至五  9:00-18:00                               星期六日及公眾假期休息";
+
+"Without Cover note"="我們會盡量在15分鐘內將Cover Note傳送到你的手機Apps內，請留意。                                                 辦公時間                      星期一至五 9:00-18:00  星期六日及公眾假期休息";
+
+"Agreement Text" = "凡經CARBO購買之汽車保險，投保人必須同意及確認符合以下條款，保單方為有效：\n\n 1. 請小心閱讀以下資料，本公司會以以下資料提供給各保險代理和保險公司作出核保資料，而這是保費多少的重要基礎，本公司會以以下條款作實；\n\n 2. 投保人必須為車主及首名記名司機；\n\n 3. 所有記名司機年齡介乎18歲至69歲，持有有效駕駛執照及交通違例扣分 (如超速)不多於9分；\n\n 4. 所有記名司機最近3年出現不多於2次索償，所有索償不涉及人命傷亡及總索償額不多於港幣50,000元；\n\n 5. 投保人及所有記名司機過去3年內未曾涉及危險駕駛、醉酒駕駛、濫藥駕駛或被罰停牌；\n\n 6. 投保人及所有記名司機過去3年內未曾被任何保險公司拒絕續保、取消或附加額外條款；\n\n 7. 投保人同意及確認不會把投保車輛借予未滿25歲 及／或 少於2年駕駛年資之人士使用；\n\n 8. 請小心填寫投保資料，特別是無索償折扣(NCD)，如與事實不符，保險公司有權追加保費或取消保單，或會影響索償；
+";
+"Agreement Text2"="  報價及以上條款或時有更改，本公司有權不作通知。 本人/本公司同意及確認符合以上投保資格及條款，並清楚明白此聲明將構成所投保保單的重要部份。";
+
+"Please select Date"="請選擇日子";
+//"Enter Car Owner & coverage type fields"="請輸入車主資料和車保類別";
+"Enter Car Owner & coverage type fields"="請輸入所有資料";
+"Please enter all the fields"="請輸入所有資料";
+"Entered Password doesn't match"="密碼不對應";
+"Successfully Sent Verification Code!"="成功發送驗証碼";
+"Please enter Verification Code"="請輸入驗証碼";
+"Please Enter Valid Email ID"="請輸入有效EMAIL ID";
+"User logged in successfully!"="成功登入";
+"Please enter all fields"="請輸入所有資料";
+"Successfully removed notification"="成功删除訊息";
+"Enter Verification Code that is sent to registered Email Id."="請輸入我們發送到你EMAIL地址的驗証碼";
+"Successfully removed policy"="成功删除保單資料";
+"Enter valid Number"="請輸入有效號碼";
+
+"Update Password"="更新密碼";
+"Verify Code"="驗證碼";
+"Verify"="驗證";
+"VERIFY"="驗證";
+"New Password"="新密碼";
+
+
+"Enter your registered Email Id"="請輸入你已登記EMAIL Id";
+"NEXT"="下一個";
+"Select Gallery Image"="從圖庫選取";
+"Take Photo"="拍照";
+"Agree the terms"="同意";
+"Process"="處理";
+"Verification code successfully sent on your email id"="成功發送驗証碼";
+"User verified successfully, please login"="用戶成功驗證，請登錄";
+"Please accept terms and conditions"="同意已上協議";
+"Profile Updated successfully!"="資料更新成功！";
+"Renewal Policy Pdf"="更新政策全文";
+"Reg.Mark Current Policy"="Reg.Mark在現行政策";
+"Password is invalid.!"="密碼無效。";
+"SIGN UP"="新註冊";
+"Reg.Mark" = "車牌";
+"Excess"="自負額";
+"VerificationCodeInvalid"="無效驗證碼";
+"PDFFileNotAvailable"="PDF文件不可用";
