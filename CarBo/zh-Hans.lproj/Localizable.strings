@@ -2,7 +2,7 @@
   Localizable.strings
   CarBo
 
-  Created by Shirish Vispute on 20/10/16.
+  Modified by Just Cheng
   Copyright © 2016 Bitware Technologies. All rights reserved.
 */
 
@@ -22,7 +22,7 @@
 "Instant Quote" ="即時報價";
 "Policy Details"="保單詳情";
 "Notifications" ="即時訊息";
-
+s
 "Notification Message"="通知消息";
 "Notification Detail"="通知详细";
 "OK"="好";
