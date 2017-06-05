@@ -160,9 +160,7 @@ if(Network) {
             }
             else
             {
-//                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Email ID not Present" message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-//                [alert show];
-                
+             
                 NSString  *str1=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
                 
                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str1 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];

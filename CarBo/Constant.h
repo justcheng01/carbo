@@ -17,6 +17,8 @@ extern NSString *const Kmaincolor;
 extern NSString *const Klightcolor;
 extern NSString *const Kmain;
 
+extern NSString *const KversionConstant;
+
 @interface Constant : NSObject
 
 @end

@@ -11,6 +11,7 @@
 #define kOFFSET_FOR_KEYBOARD 100.0
 #import "Constant.h"
 #import "Reachability.h"
+#define MAXLENGTH 8
 @interface userProfile ()
 
 @end
@@ -18,10 +19,9 @@
 @implementation userProfile
 @synthesize nametext,emailtext,phonetext,profileImageview,scrollview;
 
-
-
 - (void)viewDidLayoutSubviews
 {
+    
 }
 
 - (void)viewDidLoad {
@@ -87,7 +87,7 @@
     NSDictionary *userNameDict = @{@"user_id" : struserid
                                    };
     NSError  *error;
-    //NSLog(@"userNameDict REviewcalled :: %@",userNameDict);
+    NSLog(@"userNameDict REviewcalled :: %@",userNameDict);
     
     NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
     NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
@@ -113,7 +113,7 @@
                                     options:NSJSONReadingMutableLeaves
                                     error:nil];
         
-        //NSLog(@"JSF Object :: %@",jsonObject);
+        NSLog(@"JSF Object :: %@",jsonObject);
         
         NSDictionary *dict=[[NSDictionary alloc]initWithDictionary:[jsonObject valueForKey:@"result"]];
         
@@ -154,126 +154,134 @@ else
     NSString *myRequestString = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
     
     NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
-   
-    NSDictionary *userNameDict = @{@"user_id" : struserid,
-                                   @"name" :  nametext.text,
-                                   @"phone" : phonetext.text
-                                   };
-    
-    NSString *myRequestString1 = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:myRequestString1]];
-    UIImage *image=[UIImage imageNamed:@"test.png"];
-    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-    
-    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [request setHTTPShouldHandleCookies:NO];
-    [request setTimeoutInterval:60];
-    [request setHTTPMethod:@"POST"];
-    
-    NSString *boundary = @"unique-consistent-string";
-    
-    // set Content-Type in HTTP header
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    // post body
-    NSMutableData *body = [NSMutableData data];
-    
-    // add params (all params are strings)
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n\r\n", @"imageCaption"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"%@\r\n", @"Some Caption"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // setting the body of the post to the reqeust
-    [request setHTTPBody:body];
-    
-    // set the content-length
-    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if(data.length > 0)
-        {
-            //success
-        }
-    }];
+
+//    
+//    NSDictionary *userNameDict = @{@"user_id" : struserid,
+//                                   @"name" :  nametext.text,
+//                                   @"phone" : phonetext.text
+//                                   };
+//    
+//    NSString *myRequestString1 = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:myRequestString1]];
+//    UIImage *image=[UIImage imageNamed:@"test.png"];
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+//    
+//    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+//    [request setHTTPShouldHandleCookies:NO];
+//    [request setTimeoutInterval:60];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    NSString *boundary = @"unique-consistent-string";
+//    
+//    // set Content-Type in HTTP header
+//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+//    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+//    
+//    // post body
+//    NSMutableData *body = [NSMutableData data];
+//    
+//    // add params (all params are strings)
+//    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n\r\n", @"imageCaption"] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"%@\r\n", @"Some Caption"] dataUsingEncoding:NSUTF8StringEncoding]];
+//    
+//     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//    
+//    // setting the body of the post to the reqeust
+//    [request setHTTPBody:body];
+//    
+//    // set the content-length
+//    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    
+//    
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        if(data.length > 0)
+//        {
+//            //success
+//        }
+//    }];
     
 
     if(nametext.text.length>0 && phonetext.text>0)
     {
-       // NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.12.101/Carboservices/updateProfile.php"];
         
-        NSString *myRequestString = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
-        
-        NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
-        
-     //   NSString *str1=@"20";
-        
-        NSDictionary *userNameDict = @{@"user_id" : struserid,
-                                       @"name" :  nametext.text,
-                                       @"phone" : phonetext.text
-                                       };
-        NSError  *error;
-  
-        NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
-        NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
-        // set Request Type
-        [request2 setHTTPMethod:@"POST"];
-        // Set content-type
-        [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-        // Set Request Body
-        [request2 setHTTPBody:post];
-        
-        // Now send a request and get Response
-        NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
-        // Log Response
-        NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
-        
-        //RR
-        if(response2.length>6)
+        if(phonetext.text.length == 8)
         {
-            NSDictionary *jsonObject = [NSJSONSerialization
-                                        JSONObjectWithData:returnData
-                                        options:NSJSONReadingMutableLeaves
-                                        error:nil];
+            // NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.12.101/Carboservices/updateProfile.php"];
             
-            //NSLog(@"JSF Object :: %@",jsonObject);
+            NSString *myRequestString = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
             
-            NSString *str = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
+            NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
             
-            if([str isEqualToString:@"Success"])
+            //   NSString *str1=@"20";
+            
+            NSDictionary *userNameDict = @{@"user_id" : struserid,
+                                           @"name" :  nametext.text,
+                                           @"phone" : phonetext.text
+                                           };
+            NSError  *error;
+            
+            NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
+            NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
+            // set Request Type
+            [request2 setHTTPMethod:@"POST"];
+            // Set content-type
+            [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+            // Set Request Body
+            [request2 setHTTPBody:post];
+            
+            // Now send a request and get Response
+            NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
+            // Log Response
+            NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+            
+            //RR
+            if(response2.length>6)
             {
-//                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Profile Updated successfully!", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-//                [alert show];
+                NSDictionary *jsonObject = [NSJSONSerialization
+                                            JSONObjectWithData:returnData
+                                            options:NSJSONReadingMutableLeaves
+                                            error:nil];
                 
-                NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                //NSLog(@"JSF Object :: %@",jsonObject);
                 
-                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-                [alert show];
+                NSString *str = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
                 
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                MainVC  *rootController =(MainVC*)[storyboard instantiateViewControllerWithIdentifier:@"MainVC"];
-                [self.navigationController pushViewController:rootController animated:YES];
+                if([str isEqualToString:@"Success"])
+                {
+                    //                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Profile Updated successfully!", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                    //                [alert show];
+                    
+                    NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                    
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                    [alert show];
+                    
+                    
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    MainVC  *rootController =(MainVC*)[storyboard instantiateViewControllerWithIdentifier:@"MainVC"];
+                    [self.navigationController pushViewController:rootController animated:YES];
+                }
+                else
+                {
+                    NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                    [alert show];
+                    
+                }
             }
             else
             {
-                
-                NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
-                
-                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Something went wrong! please try again later.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
                 [alert show];
-                
             }
         }
-        else
-        {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Something went wrong! please try again later.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+        else{
+            
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"PleaseEnterValidMobileNo", nil)  delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
             [alert show];
-        }
+          }
     }
     else
     {
@@ -334,16 +342,13 @@ else
 {
     if(textField.tag==1337)
     {
-        // Prevent crashing undo bug – see note below.
-        if(range.length + range.location > textField.text.length)
-        {
+        int length = [textField.text length] ;
+        
+        if (length >= MAXLENGTH && ![string isEqualToString:@""]) {
+            textField.text = [textField.text substringToIndex:MAXLENGTH];
             return NO;
         }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        return newLength <= 15;
     }
-    
     return YES;
 }
 

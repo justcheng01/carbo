@@ -38,6 +38,11 @@
 @property(strong,nonatomic) IBOutlet UIView *sideview;
 @property(strong,nonatomic) IBOutlet UIButton *menubtn;
 
+//New External Subview for fetching mobile number
+@property (weak, nonatomic) IBOutlet UILabel      *Mmobile_label;
+@property (weak, nonatomic) IBOutlet UITextField *M_mobile_text;
+@property (weak, nonatomic) IBOutlet UIButton *MokBtn;
+@property (strong, nonatomic) IBOutlet UIView *M_externalsubview;
 
 
 

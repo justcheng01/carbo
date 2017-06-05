@@ -11,6 +11,7 @@
 #import "notificationListVC.h"
 #import "Reachability.h"
 #import "Constant.h"
+#define MAXLENGTH 8
 
 //carbo car insurance 汽車保險
 
@@ -46,7 +47,6 @@
    UILabel *Dprice; 
    NSString *fuelStation_name; 
 
-    
    CALayer *sublayer;
    CALayer *sublayer3 ;
    CALayer *sublayer2;
@@ -62,16 +62,18 @@
    NSString *notiStr;
    NSString *renewalStr;
    UIColor  *colourgreen;
+   UITextField *textfield;
     
-    UITextField *textfield;
+   NSString *nametext;
+   NSString *emailtext;
+   NSString *phonetext;
 }
 
 @end
 
 @implementation MainVC
 
-@synthesize Kprice_text,Dprice_text,Pprice_text,Pview1,menu_Button_table,sideview,menuView,policyBtn,notificationBtn,indicatorview,InstantBtn,InstantLabel
-,policyLabel,notificationLabel,notificationCount,policylistCount;
+@synthesize Kprice_text,Dprice_text,Pprice_text,Pview1,menu_Button_table,sideview,menuView,policyBtn,notificationBtn,indicatorview,InstantBtn,InstantLabel,policyLabel,notificationLabel,notificationCount,policylistCount, Mmobile_label, M_mobile_text, MokBtn;
 
 #pragma mark -- View Cycle
 
@@ -85,15 +87,12 @@
     colourgreen = [self getUIColorObjectFromHexString:Kmaincolor alpha:1.0]; // navigation
     
     UIColor *barcolor = [self getUIColorObjectFromHexString:Kmain alpha:1.0];
-    
     self.navigationController.navigationBar.barTintColor = barcolor;
     NSString *Home=[NSString stringWithFormat:NSLocalizedString(@"CarBo", nil)];
-    
     self.navigationItem.title = Home;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-  
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"logo.png"] forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsCompact];
     
     menu_Button_table=[[UITableView alloc]init];
@@ -109,7 +108,6 @@
     personimage=[[UIImageView alloc]initWithFrame:CGRectMake(40,20,80,30)];
     [personimage setUserInteractionEnabled:YES];
     UIImage *image2=[UIImage imageNamed:@"carboIcon2.png"];
-
     personimage.image=image2;
    
     UIButton *menuBtn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 44.0f, 44.0f)];
@@ -117,9 +115,8 @@
     [menuBtn addTarget:self action:@selector(called_menu_Option:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
   
-    NSString *Phone=[NSString stringWithFormat:NSLocalizedString(@"Phone", nil)];
-    
-    NSString *NSl=[NSString stringWithFormat:NSLocalizedString(@"Instant Quote", nil) ];
+    NSString *Phone = [NSString stringWithFormat:NSLocalizedString(@"Phone", nil)];
+    NSString *NSl = [NSString stringWithFormat:NSLocalizedString(@"Instant Quote", nil) ];
     [InstantLabel setText:NSl];
     
     NSl=[NSString stringWithFormat:NSLocalizedString(@"Policy Details", nil) ];
@@ -130,6 +127,7 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
+     M_mobile_text.delegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -150,46 +148,333 @@
     NSString *deviceID=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"DeviceToken"]];
     textfield = [[UITextField alloc]initWithFrame:CGRectMake(0,60,[UIScreen mainScreen].bounds.size.width,40)];
     [textfield setText:deviceID];
-    textfield.delegate=self;
+    textfield.delegate = self;
     
-    BOOL Bool = YES;  ; //=  [self needsUpdate];        //Call To Check The Current Version
+    
+// Code for Checking current update
+    
+    BOOL Bool =  [self check_version];        //Call To Check The Current Version
+   // BOOL Bool =  [self needsUpdate];        //Call To Check The Current Version
     
     if(Bool)
     {
-        //NSLog(@"Latest Build ");
+        NSLog(@"Latest Build ");
     }
     else
     {
-        //NSLog(@"Build OLD ");
+        NSLog(@"Build OLD ");
+       
         NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString* appID = infoDictionary[@"CFBundleIdentifier"];
-
+      //    %E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA
+        
         NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftwareUpdate?id=<%@>&mt=8", appID]];
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/app/apple-store/%@?mt=8", appID]];
-       
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Carbo update available" message:@"Please update the latest version to continue" preferredStyle:UIAlertControllerStyleAlert];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/hk/app/apple-store/%@?mt=8", appID]];
+        url = [NSURL URLWithString:@"https://itunes.apple.com/hk/app/apple-store/id1180974630?mt=8"];
+        
+        //https://itunes.apple.com/hk/app/apple-store/id1180974630?mt=8  ?mt=8",
+       //   url = [NSURL URLWithString:[NSString stringWithFormat:@"https"]]
+       //    url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/in/app/carbo-car-insurance-%E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA/id1180974630?mt=8", appID]];
+    
+        //https://itunes.apple.com/hk/app/carbo-car-insurance-%E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA/id1180974630?mt=8
+        // url = [NSURL URLWithString:[NSString stringWithFormat:@" https://itunes.apple.com/in/app/carbo-car-insurance-%E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA/id1180974630?mt=8", appID]];
+        //  https://itunes.apple.com/in/app/carbo-car-insurance-%E6%B1%BD%E8%BB%8A%E4%BF%9D%E9%9A%AA/id1180974630?mt=8
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"CARBO 已有新版本" message:@"我們改良了App, 請更新新版本！" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {
                                                                   [[UIApplication sharedApplication] openURL:url];
                                                                   [alert dismissViewControllerAnimated:YES completion:nil];
                                                               }];
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  exit(0);
+                                                              }];
+        [alert addAction:cancelAction];
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.view setUserInteractionEnabled:YES];
     [self NotificationDetails];
     [self Renewal_list];
+    [self GetUserDetails];
+    [self checkMobilenumber];
 }
+
+-(void)GetUserDetails
+{
+    BOOL Network=[self Reachability_To_Chechk_Network];
+    
+    if(Network){
+        
+        NSString *myRequestString = [NSString stringWithFormat:@"%@getUserdetails.php",kAPIEndpointLatestPath];
+        
+        NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
+        
+        NSDictionary *userNameDict = @{@"user_id" : struserid
+                                       };
+        NSError  *error;
+        NSLog(@"userNameDict REviewcalled :: %@",userNameDict);
+        
+        NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
+        NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
+        // set Request Type
+        [request2 setHTTPMethod:@"POST"];
+        // Set content-type
+        [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+        // Set Request Body
+        [request2 setHTTPBody:post];
+        
+        // Now send a request and get Response
+        NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
+        // Log Response
+        NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+ 
+        //RR
+        if(response2.length>6)
+        {
+            NSDictionary *jsonObject = [NSJSONSerialization
+                                        JSONObjectWithData:returnData
+                                        options:NSJSONReadingMutableLeaves
+                                        error:nil];
+            NSLog(@"JSF Object :: %@",jsonObject);
+            
+           NSDictionary *dict=[[NSDictionary alloc]initWithDictionary:[jsonObject valueForKey:@"result"]];
+            
+           nametext  = [NSString stringWithFormat:@"%@",[dict valueForKey:@"name"]];
+           emailtext  = [NSString stringWithFormat:@"%@",[dict valueForKey:@"email"]];
+           phonetext = [NSString stringWithFormat:@"%@",[dict valueForKey:@"phone"]];
+            
+           NSString *str41= [NSString stringWithFormat:@"%@",[dict valueForKey:@"profile_image"]];
+        }
+        else
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Something went wrong! please try again later.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+          //  [alert show];
+        }
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"No Network Connection!", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+       // [alert show];
+        
+    }
+}
+
+-(IBAction)UpdateUserDetails:(id)sender
+{
+    NSString *myRequestString = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
+    
+    NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
+    
+    phonetext = M_mobile_text.text;
+    if(nametext.length>0 && phonetext.length>0)
+    {
+        if(phonetext.length == 8)
+        {
+            // NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.12.101/Carboservices/updateProfile.php"];
+            
+            NSString *myRequestString = [NSString stringWithFormat:@"%@updateProfile.php",kAPIEndpointLatestPath];
+            
+            NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
+            
+            //   NSString *str1=@"20";
+            
+            NSDictionary *userNameDict = @{@"user_id" : struserid,
+                                           @"name"    :  nametext,
+                                           @"phone"   : phonetext
+                                           };
+            NSError  *error;
+            
+            NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
+            NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
+            // set Request Type
+            [request2 setHTTPMethod:@"POST"];
+            // Set content-type
+            [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+            // Set Request Body
+            [request2 setHTTPBody:post];
+            
+            // Now send a request and get Response
+            NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
+            // Log Response
+            NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+            
+            //RR
+            if(response2.length>6)
+            {
+                NSDictionary *jsonObject = [NSJSONSerialization
+                                            JSONObjectWithData:returnData
+                                            options:NSJSONReadingMutableLeaves
+                                            error:nil];
+      
+                NSString *str = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
+                
+                if([str isEqualToString:@"Success"])
+                {
+                    NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                    [alert show];
+                    [_M_externalsubview removeFromSuperview];
+                }
+                else
+                {
+                    NSString  *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                    [alert show];
+                    [_M_externalsubview removeFromSuperview];
+                }
+            }
+            else
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Something went wrong! please try again later.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                [alert show];
+                [_M_externalsubview removeFromSuperview];
+            }
+        }
+        else{
+            
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"PleaseEnterValidMobileNo", nil)  delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+           // [alert show];
+        }
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please enter all fields", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        //[alert show];
+    }
+}
+
+
+-(void)checkMobilenumber
+{
+     if(phonetext.length!=8)
+     {
+         [M_mobile_text setPlaceholder: NSLocalizedString(@"Phone", nil)];
+         [MokBtn setTitle:NSLocalizedString(@"OK", nil) forState:UIControlStateNormal];
+         
+         [self.M_externalsubview setFrame:CGRectMake((self.view.frame.size.width/2)-120, (self.view.frame.size.height/2)-64, 240, 128)];
+         [self.M_externalsubview.layer setShadowColor:[UIColor blackColor].CGColor];
+         [self.M_externalsubview.layer setShadowOpacity:0.5];
+         [self.M_externalsubview.layer setShadowRadius:1.0];
+         [self.M_externalsubview.layer setShadowOffset:CGSizeMake(0.0, 1.0)];
+         
+         CGFloat borderWidth = 1.5f;
+         self.M_externalsubview.layer.borderColor = [UIColor lightGrayColor].CGColor;
+         self.M_externalsubview.layer.borderWidth = borderWidth;
+         
+         //Bottom Line Code
+         UIColor *green_color  = [self getUIColorObjectFromHexString:@"#28AC70" alpha:1.0];
+         CALayer *bottomBorder = [CALayer layer];
+         bottomBorder.frame = CGRectMake(0.0f,M_mobile_text.frame.size.height - 1, M_mobile_text.frame.size.width+200, 3.0f);
+         bottomBorder.backgroundColor = green_color.CGColor;
+         [M_mobile_text.layer addSublayer:bottomBorder];
+
+         [self.view addSubview:self.M_externalsubview];
+     }
+ }
+
+-(IBAction)CheckMobilenumberLength:(id)sender
+{
+     if(M_mobile_text.text.length==8)
+     {
+         UIButton *Btn =[[UIButton alloc]init];
+         [self UpdateUserDetails:Btn];
+         
+     }else if (M_mobile_text.text.length < 8){
+  
+         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"PleaseEnterValidMobileNo", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+         [alert show];
+     }
+     else if(M_mobile_text.text.length == 0)
+     {
+         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Carbo" message:NSLocalizedString(@"EnterYourPhoneNo", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil)otherButtonTitles: nil];
+         [alert show];
+     }
+}
+
+
+
 
 #pragma  mark --- Check Version with the Current Version Available on App Store
 
--(BOOL) needsUpdate    //Check Version with the Current Version Available on App Store
+
+-(BOOL)check_version
+{
+    NSString *myRequestString = [NSString stringWithFormat:@"%@checkcarboversion.php",kAPIEndpointLatestPath];
+    
+    NSString *struserid = [[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"];
+    
+    NSMutableDictionary *userNameDict = [[NSMutableDictionary alloc]init];
+    
+    NSError *error;
+    //NSLog(@"userNameDict :: %@, myRequestString :: %@",userNameDict,myRequestString);
+    
+    BOOL Network=[self Reachability_To_Chechk_Network];
+    
+    if(Network)
+    {
+        NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
+        NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
+        // set Request Type
+        [request2 setHTTPMethod:@"POST"];
+        // Set content-type
+        [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+        // Set Request Body
+        [request2 setHTTPBody:post];
+        
+        // Now send a request and get Response
+        NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
+        // Log Response
+        NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+        NSLog(@"Response 2 check Version :: %@",response2);
+        if(response2.length>10)
+        {
+            NSDictionary   * jsonObject = [NSJSONSerialization
+                                           JSONObjectWithData:returnData
+                                           options:NSJSONReadingMutableLeaves
+                                           error:nil];
+            //NSLog(@"JS :: %@",jsonObject);
+            
+            NSString    *str = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
+            NSString    *strmessage = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+            NSString *str_success =@"success";
+            
+            if([str isEqualToString:str_success])
+            {
+                NSString *server_version = [NSString stringWithFormat:@"%@", [jsonObject valueForKey:@"IOSAPP"]];
+                float server_value = [server_version floatValue];        // Server side version value
+                float constant_App= [KversionConstant floatValue];  // App side version value
+                NSLog(@"server value :: %f",server_value);
+//            consumer  3 == 3
+//              store  4 ==
+                
+              if(server_value > constant_App)
+                {
+                    NSLog(@"Called If Server value is greater than app value ");
+                    return NO;
+                }
+                else
+                {
+                    NSLog(@"Called If Server value is less than app value or equal ");
+                    return YES;
+                }            }
+        }
+    }
+    else
+    {
+        return YES;
+    }
+    
+    return YES;
+}
+
+-(BOOL) needsUpdate            //Check Version with the Current Version Available on App Store
 {
     NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     // //NSLog(@"  [[UIDevice currentDevice] systemVersion] :: %@ AppVersionString:: %@",  [[UIDevice currentDevice] systemVersion],appVersionString);
@@ -208,7 +493,6 @@
     if(arr.count>0)
     {
         //NSLog(@"arr at object at index 0 :: %@",[arr objectAtIndex:0]);
-        
         NSDictionary *dict=[[NSDictionary alloc]initWithDictionary:[arr objectAtIndex:0]];
         str=[NSString stringWithFormat:@"%@",[dict valueForKey:@"version"]];
     }
@@ -233,8 +517,27 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 {
     [textField resignFirstResponder];
+    [M_mobile_text resignFirstResponder];
     return YES;
 }
+
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(textField.tag ==105)
+    {
+        int length = [textField.text length] ;
+    
+        if (length >= MAXLENGTH && ![string isEqualToString:@""]) {
+            textField.text = [textField.text substringToIndex:MAXLENGTH];
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
 
 -(void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
 {
@@ -454,7 +757,7 @@ if(indexPath.row==4)
     [menuView removeFromSuperview];
     [menu_Button_table removeFromSuperview];
     [sublayer removeFromSuperlayer];
-
+    [M_mobile_text resignFirstResponder];
     [UIView animateWithDuration:0.3 animations:^{
     }];
 }

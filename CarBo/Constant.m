@@ -14,11 +14,11 @@ NSString *const kAPIEndpointHost = @"http://74.208.12.101/Carboservices/";
 NSString *const kAPIEndpointHost = @"http://74.208.12.101/Carboservices/";
 #endif
 
-NSString *const kAPIEndpointLatestPath  = @"https://panel.carbo.com.hk/Carboservices/";
-NSString *const Kmain                                  = @"#18a967";
+NSString *const kAPIEndpointLatestPath    = @"https://panel.carbo.com.hk/Carboservices/";
+NSString *const Kmain                                 = @"#18a967";
 NSString *const Kmaincolor                         = @"#28AC70";
 NSString *const Klightcolor                          = @"#F8F6F8";
+NSString *const KversionConstant                = @"6";                   // Increment this value for new version upload every time. Update on server sider as well. old  was 5
 
 @implementation Constant
-
 @end

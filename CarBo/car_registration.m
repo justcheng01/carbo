@@ -66,7 +66,8 @@
     UIImageView *logoImageView2;
     
     NSString *FlagDateArrow;
-    
+    UIView *userView;
+    NSInteger calculate_age;
  }
 @property(nonatomic,strong) UIActivityIndicatorView *indicator;
 
@@ -136,7 +137,7 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
     [nextBtn setTitle:@"Done" forState:UIControlStateNormal];
     [nextBtn setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     [nextBtn setTitleColor:colour forState:UIControlStateNormal];
-    [nextBtn addTarget:self action:@selector(Upload_car_Information) forControlEvents:UIControlEventTouchUpInside];
+    [nextBtn addTarget:self action:@selector(call_profile_Detail_view_NCD_AGE_EXP) forControlEvents:UIControlEventTouchUpInside];
     nextBtn.layer.borderWidth=2;
     nextBtn.layer.cornerRadius=15;
     nextBtn.layer.borderColor= [colour CGColor];
@@ -443,6 +444,7 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
 {
     if(sender.tag==101)
     {
+        NSLog(@"NSLSDD :: %@",NSLSDD);
         select_Date_label.text=NSLSDD;
         [pView removeFromSuperview];
     }
@@ -455,6 +457,27 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
         
+        NSLog(@"NSLSDD :: %@",strDate);
+        
+        // Calculate Age from birthdate Entered
+        
+        
+        // Convert string to date object
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSDate* birthday = [dateFormat dateFromString:strDate];
+        NSLog(@"Birthday Date :: %@",birthday);
+       
+        NSDate* now = [NSDate date];
+        NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                           components:NSCalendarUnitYear
+                                           fromDate:birthday
+                                           toDate:now
+                                           options:0];
+       calculate_age = [ageComponents year];
+        
+       NSLog(@"Calculated Age :: %ld",(long)calculate_age);
+       
         select_Date_label.text=strDate;
          [pView removeFromSuperview];
     }
@@ -1398,6 +1421,7 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
     
    BOOL Network=[self Reachability_To_Chechk_Network];
     
+    
    if(Network)
     {
       if([SimageFlag isEqualToString:@"YES"])
@@ -1649,7 +1673,6 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
                                     
                                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
                                     [alert show];
-
                                     
 //                                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Something went wrong! please try again later.", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
 //                                    [alert show];
@@ -1801,8 +1824,482 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"No Network Connection!", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
     }
+  
     nextBtn.userInteractionEnabled = YES;
 }
+
+
+-(void)call_profile_Detail_view_NCD_AGE_EXP
+{
+    
+    textcontaint = [[NSMutableArray alloc]init];
+    
+    for(int index=0;index<11;index++)
+    {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+        [self tableView:carTableview didSelectRowAtIndexPath:path];
+    }
+
+    //Date of Birth
+    NSString *date_of_birth;
+    NSString *datec=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:2]];
+    
+    if([datec isEqualToString:@"Select Date"])
+    {
+        date_of_birth = @"Select Date";
+    }
+    else if([datec isEqualToString:@"選擇"])
+    {
+        date_of_birth=@"選擇";
+    }
+    else
+    {
+        date_of_birth = datec;
+    }
+    
+    
+    //NO Claim Discount
+    NSString *Value_NCD = [NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:4]];
+  
+    
+    UIButton *OKBtn;
+    UIButton *cancelBtn;
+    UILabel *drivingExp;
+    UILabel *val_drivingExp;
+    UILabel *age;
+    UILabel *val_age;
+    UILabel *dialogNo;
+    UILabel *val_NCD;
+    
+    //    tvDrivingExp, tvAge,tvNCDTest,tvDialogNo,tvDialogYes
+    [userView removeFromSuperview];
+    [pView removeFromSuperview];
+    
+    userView=[[UIView alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width / 2)-120, ([UIScreen mainScreen].bounds.size.height / 2)-120 ,250,250)];
+    //NSLog(@"PV::: %@",pView);
+    [userView setBackgroundColor:[UIColor whiteColor]];
+     userView.layer.borderWidth=2;
+    userView.layer.cornerRadius = 2;
+    userView.layer.masksToBounds = YES;
+     [userView.layer setBorderColor:[UIColor darkGrayColor].CGColor];
+    //[win addSubview:pView];
+    
+    UILabel *linelabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 55, userView.frame.size.width, 1)];
+    [linelabel setBackgroundColor:[UIColor darkGrayColor]];
+    //[userView addSubview:linelabel];
+    
+    cancelBtn=[[UIButton alloc]initWithFrame:CGRectMake(4,210,119,30)];
+    [cancelBtn setBackgroundColor:[UIColor whiteColor]];
+    [cancelBtn setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+    [cancelBtn setTag:101];
+    cancelBtn.layer.cornerRadius = 5;
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelBtn addTarget:self action:@selector(user_cancelcalled:) forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.layer.borderWidth=2;
+    [cancelBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [userView addSubview:cancelBtn];
+    
+    OKBtn=[[UIButton alloc]initWithFrame:CGRectMake(126, 210, 119, 30)];
+    [OKBtn setBackgroundColor:[UIColor whiteColor]];
+    [OKBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [OKBtn setTitle:NSLocalizedString(@"OK", nil) forState:UIControlStateNormal];
+    OKBtn.layer.cornerRadius = 5;
+    [OKBtn addTarget:self action:@selector(user_okcalled:) forControlEvents:UIControlEventTouchUpInside];
+    [OKBtn setTag:102];
+    OKBtn.layer.borderWidth=2;
+    [OKBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [userView addSubview:OKBtn];
+    
+    
+ //     maincolor = [self getUIColorObjectFromHexString:Kmaincolor alpha:1.0];
+    //Title
+    drivingExp=[[UILabel alloc]initWithFrame:CGRectMake(0,0, 250,55)];
+    [drivingExp setBackgroundColor:maincolor];
+  //  drivingExp.layer.cornerRadius = 5;
+    drivingExp.layer.masksToBounds = YES;
+    drivingExp.textAlignment = NSTextAlignmentCenter;
+    drivingExp.text=NSLocalizedString(@"YourDetails", nil);
+    [drivingExp setTextColor:[UIColor whiteColor]];
+    [userView addSubview:drivingExp];
+//    [UIColor grayColor].CGColor
+//    Kmaincolor
+  
+    //Driving Experience
+    drivingExp=[[UILabel alloc]initWithFrame:CGRectMake(4,60, 119,40)];
+    [drivingExp setBackgroundColor:[UIColor whiteColor]];
+    drivingExp.layer.cornerRadius = 5;
+    drivingExp.layer.masksToBounds = YES;
+    drivingExp.textAlignment = NSTextAlignmentCenter;
+    drivingExp.text=@"牌齡";  //Driving EXP
+    [userView addSubview:drivingExp];
+    
+ //   Driving Exp=牌齡 8年AGE＝年齡 25歲NCD （NO NEED）NCD： 60%SHOULD HAVE ％
+    
+    //EXPERIENCE CAR DRIVING
+    NSString *Driving_EXP = [NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:5]];
+    
+    NSInteger i = [Driving_EXP integerValue];
+    
+    if(i>1)
+    {
+       Driving_EXP = [NSString stringWithFormat:@"%@ 年",[textcontaint objectAtIndex:5]];
+    }
+    else{
+      Driving_EXP = [NSString stringWithFormat:@"%@ 年",[textcontaint objectAtIndex:5]];
+    }
+    
+    val_drivingExp=[[UILabel alloc]initWithFrame:CGRectMake(126,60, 119,40)];
+    [val_drivingExp setBackgroundColor:[UIColor whiteColor]];
+    val_drivingExp.layer.cornerRadius = 5;
+    val_drivingExp.textAlignment = NSTextAlignmentLeft;
+    val_drivingExp.layer.masksToBounds = YES;
+    val_drivingExp.text=Driving_EXP;
+    [userView addSubview:val_drivingExp];
+    
+    //Age Experience
+    age =[[UILabel alloc]initWithFrame:CGRectMake(4,110, 119,40)];
+    [age setBackgroundColor:[UIColor whiteColor]];
+    age.layer.cornerRadius = 5;
+    age.layer.masksToBounds = YES;
+    age.textAlignment = NSTextAlignmentCenter;
+    age.text=@"年齡";  //AGE
+    [userView addSubview:age];
+    
+    
+    //AGE
+    NSString *cal_age;
+    
+    if(calculate_age>1)
+    {
+        cal_age =[NSString stringWithFormat:@"%ld 歲",(long)calculate_age];
+    }
+    else{
+          cal_age=[NSString stringWithFormat:@"%ld 歲",(long)calculate_age];
+    }
+    
+    
+    val_age=[[UILabel alloc]initWithFrame:CGRectMake(126,110, 119,40)];
+    [val_age setBackgroundColor:[UIColor whiteColor]];
+    val_age.layer.cornerRadius = 5;
+    val_age.textAlignment = NSTextAlignmentLeft;
+    val_age.layer.masksToBounds = YES;
+    val_age.text=cal_age;
+    [userView addSubview:val_age];
+    
+    //NCD Value
+    
+    dialogNo=[[UILabel alloc]initWithFrame:CGRectMake(4,160, 119,40)];
+    [dialogNo setBackgroundColor:[UIColor whiteColor]];
+    dialogNo.layer.cornerRadius = 5;
+    dialogNo.layer.masksToBounds = YES;
+    dialogNo.textAlignment = NSTextAlignmentCenter;
+    dialogNo.text=@"NCD";
+    [userView addSubview:dialogNo];
+    
+    //NCD VALUE SELECTED
+     Value_NCD = [NSString stringWithFormat:@"%@%%",[textcontaint objectAtIndex:4]];
+    
+    val_NCD=[[UILabel alloc]initWithFrame:CGRectMake(126,160, 119,40)];
+    [val_NCD setBackgroundColor:[UIColor whiteColor]];
+    val_NCD.layer.cornerRadius = 5;
+    val_NCD.textAlignment = NSTextAlignmentLeft;
+    val_NCD.layer.masksToBounds = YES;
+    val_NCD.text = Value_NCD;
+    [userView addSubview:val_NCD];
+    
+    UILabel *linelabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 198, userView.frame.size.width, 1)];
+    [linelabel1 setBackgroundColor:[UIColor darkGrayColor]];
+
+//  [userView addSubview:linelabel1];
+    
+//    if(applicant_status.length>0 && job_industry.length>0 && no_claim_discount.length>0 && driving_expiry.length>0&&job_position.length>0 && sum_insured.length>0)
+//    {
+//        NSString *urlString;
+//        
+//        if(![date_of_birth isEqualToString:@"Select Date"] && ![date_of_birth isEqualToString:@"選擇"])
+//        {
+//          [self.view addSubview:userView];
+//        }
+//    }
+    
+    //    [pass_text becomeFirstResponder];
+    
+    //    [pass_text becomeFirstResponder];
+    
+    BOOL Checkflag = [self callToCheck_Parameter_Values];
+    
+    if(Checkflag)
+    {
+          [self.view addSubview:userView];
+    }
+}
+
+//Driving Exp=牌齡 8年AGE＝年齡 25歲      NCD （NO NEED）NCD： 60%SHOULD HAVE ％
+
+-(BOOL)callToCheck_Parameter_Values
+{
+    textcontaint = [[NSMutableArray alloc]init];
+    
+    for(int index=0;index<11;index++)
+    {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+        [self tableView:carTableview didSelectRowAtIndexPath:path];
+    }
+    
+    
+    
+    NSString *trimmed;
+    
+    NSString *classstr=classvalF;
+    trimmed = [classstr stringByReplacingOccurrencesOfString: @" "
+                                                  withString: @""
+                                                     options: NSRegularExpressionSearch
+                                                       range: NSMakeRange(0, classstr.length)];
+    classstr=trimmed;
+    
+    NSString *vehical_name=makeTextF;
+    trimmed = [vehical_name stringByReplacingOccurrencesOfString: @" "
+                                                      withString: @""
+                                                         options: NSRegularExpressionSearch
+                                                           range: NSMakeRange(0, vehical_name.length)];
+    vehical_name=trimmed;
+    
+    //  NSData *dataenc = [vehical_name dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    //    vehical_name = [[NSString alloc]initWithData:dataenc encoding:NSUTF8StringEncoding];
+    
+    
+    NSString *vehical_model=modelTextF;
+    trimmed = [vehical_model stringByReplacingOccurrencesOfString: @" "
+                                                       withString: @""
+                                                          options: NSRegularExpressionSearch
+                                                            range: NSMakeRange(0, vehical_model.length)];
+    vehical_model=trimmed;
+    
+    //      dataenc = [vehical_model dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    //    vehical_model = [[NSString alloc]initWithData:dataenc encoding:NSUTF8StringEncoding];
+    
+    
+    
+    NSString *year_of_manufacture=yearTextF;
+    trimmed = [year_of_manufacture stringByReplacingOccurrencesOfString: @" "
+                                                             withString: @""
+                                                                options: NSRegularExpressionSearch
+                                                                  range: NSMakeRange(0, year_of_manufacture.length)];
+    year_of_manufacture=trimmed;
+    
+    NSString *engine_capacity=engineCapacityTextF;
+    
+    trimmed = [engine_capacity stringByReplacingOccurrencesOfString: @" "
+                                                         withString: @""
+                                                            options: NSRegularExpressionSearch
+                                                              range: NSMakeRange(0, engine_capacity.length)];
+    engine_capacity=trimmed;
+    
+    
+    //Vehicle Body Type
+    NSString *vehicle_bodyType=bodytypeValF;
+    trimmed = [vehicle_bodyType stringByReplacingOccurrencesOfString: @" "
+                                                          withString: @""
+                                                             options: NSRegularExpressionSearch
+                                                               range: NSMakeRange(0, vehicle_bodyType.length)];
+    vehicle_bodyType=trimmed;
+    
+    // Appllicant Status
+    NSString *applicant_status=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:1]];
+    trimmed = [applicant_status stringByReplacingOccurrencesOfString: @" "
+                                                          withString: @""
+                                                             options: NSRegularExpressionSearch
+                                                               range: NSMakeRange(0, applicant_status.length)];
+    applicant_status=trimmed;
+    
+    
+    //Date of Birth
+    NSString *date_of_birth;
+    NSString *datec=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:2]];
+    
+    if([datec isEqualToString:@"Select Date"])
+    {
+        date_of_birth = @"Select Date";
+    }
+    else if([datec isEqualToString:@"選擇"])
+    {
+        date_of_birth=@"選擇";
+    }
+    else
+    {
+        date_of_birth = datec;
+    }
+    
+    //Job Industry
+    NSString *job_industry=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:3]];
+    trimmed = [job_industry stringByReplacingOccurrencesOfString: @" "
+                                                      withString: @""
+                                                         options: NSRegularExpressionSearch
+                                                           range: NSMakeRange(0, job_industry.length)];
+    job_industry=trimmed;
+    
+    //   dataenc = [job_industry dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    // job_industry = [[NSString alloc]initWithData:dataenc encoding:NSUTF8StringEncoding];
+    
+    //NSLog(@"Job Industry :: %@ :: DAteenc ::",job_industry);
+    
+    //NO Claim Discount
+    NSString *myString = [NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:4]];
+    NSString *mySmallerString;
+    if([myString isEqualToString:@" 0"])
+    {
+        mySmallerString = @"0";
+        trimmed = [mySmallerString stringByReplacingOccurrencesOfString: @" "
+                                                             withString: @""
+                                                                options: NSRegularExpressionSearch
+                                                                  range: NSMakeRange(0, mySmallerString.length)];
+        mySmallerString=trimmed;
+    }
+    else
+    {
+        mySmallerString = [myString substringToIndex:2];
+        trimmed = [mySmallerString stringByReplacingOccurrencesOfString: @" "
+                                                             withString: @""
+                                                                options: NSRegularExpressionSearch
+                                                                  range: NSMakeRange(0, mySmallerString.length)];
+        mySmallerString=trimmed;
+    }
+    
+    NSString *no_claim_discount = mySmallerString;
+    
+    //Driving Expiry
+    NSString *driving_expiry=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:5]];
+    trimmed = [driving_expiry stringByReplacingOccurrencesOfString: @" "
+                                                        withString: @""
+                                                           options: NSRegularExpressionSearch
+                                                             range: NSMakeRange(0, driving_expiry.length)];
+    driving_expiry=trimmed;
+    
+    //Job Position
+    NSString *job_position=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:6]];
+    
+    trimmed = [job_position stringByReplacingOccurrencesOfString: @" "
+                                                      withString: @""
+                                                         options: NSRegularExpressionSearch
+                                                           range: NSMakeRange(0, job_position.length)];
+    job_position = trimmed;
+    
+    //  dataenc = [job_position dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    //  job_position = [[NSString alloc]initWithData:dataenc encoding:NSUTF8StringEncoding];
+    
+    //NSLog(@"Text Constraint :: %@ JOb Position :: %@ ",[textcontaint objectAtIndex:7],job_position);
+    
+    //Sum insured
+    NSString *strc=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]valueForKey: @"Policyselected"]];
+    NSString *sum_insured;
+    
+    if([strc isEqualToString:@"Comprehensive"])
+    {
+        sum_insured=[NSString stringWithFormat:@"%@",[textcontaint objectAtIndex:9]];
+        trimmed = [sum_insured stringByReplacingOccurrencesOfString: @" "
+                                                         withString: @""
+                                                            options: NSRegularExpressionSearch
+                                                              range: NSMakeRange(0, sum_insured.length)];
+        sum_insured=trimmed;
+    }
+    else
+    {
+        sum_insured=@"0";
+    }
+    
+    NSData *imageData = UIImageJPEGRepresentation(imageview.image, 90);
+    
+    NSString *user_id =[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"]];
+    
+    NSString *policy_id;
+    
+    if([strc isEqualToString:@"Comprehensive"])
+    {
+        policy_id=@"1";
+    }
+    else
+    {
+        policy_id=@"2";
+    }
+    
+    
+    if([SimageFlag isEqualToString:@"YES"])
+    {
+        if(applicant_status.length>0 && job_industry.length>0 && no_claim_discount.length>0 && driving_expiry.length>0&&job_position.length>0 && sum_insured.length>0)
+        {
+            NSString *urlString;
+            
+            if(![date_of_birth isEqualToString:@"Select Date"] && ![date_of_birth isEqualToString:@"選擇"])
+            {
+                return YES;
+            }
+            else //DAte
+            {
+                [self.view setUserInteractionEnabled:YES];
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please select Date", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        else //Fields Check
+        {
+      
+            //[self.indicator removeFromSuperview];
+            [self.view setUserInteractionEnabled:YES];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Enter Car Owner & coverage type fields", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+            [alert show];
+                    return NO;
+        }
+    }
+    else  // Without Image Code Else Part
+    {
+        if(![date_of_birth isEqualToString:@"Select Date"]&& ![date_of_birth isEqualToString:@"選擇"])
+        {
+            if(classstr.length>0&&vehical_name.length>0&&vehical_model.length>0&&year_of_manufacture.length>0&&engine_capacity.length>0&&vehicle_bodyType.length>0&&applicant_status.length>0&&job_industry.length>0 && no_claim_discount.length>0&&driving_expiry.length>0&&job_position.length>0&&sum_insured.length>0)
+            {
+                  return YES;
+            }
+            else /// DAta Param Else
+            {
+                [self.view setUserInteractionEnabled:YES];
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please enter all the fields", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        else //DAte
+        {
+            [self.view setUserInteractionEnabled:YES];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please select Date", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+            [alert show];
+        }
+    }  //ImageFlag else  closing Bracket
+    
+    return NO;
+}
+
+
+-(void)user_cancelcalled:(UIButton*)sender
+{
+    [pView removeFromSuperview];
+    [userView removeFromSuperview];
+}
+
+-(IBAction)user_okcalled:(UIButton*)sender
+{
+    [self  Upload_car_Information];
+    
+    [pView removeFromSuperview];
+    [userView removeFromSuperview];
+
+}
+
+
+
+
+
+
+
+
+
 
 
 #pragma mark -- Reachability
@@ -1862,14 +2359,16 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
         if(textField.tag==119)
         {
             //NSLog(@"Called Sum insured");
-            [self Upload_car_Information];
+         //   [self Upload_car_Information];
+            [self call_profile_Detail_view_NCD_AGE_EXP];
         }
     }
     else
     {
         if(textField.tag==116)
         {
-          [self Upload_car_Information];
+              [self call_profile_Detail_view_NCD_AGE_EXP];
+        //  [self Upload_car_Information];
         }
     }
     
@@ -1923,7 +2422,6 @@ bodytypeValF,makeTextF,modelTextF,yearTextF,engineCapacityTextF,imageviewF,Simag
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string 
 {
-    
     if(textField.tag==115)
     {
         // Prevent crashing undo bug – see note below.

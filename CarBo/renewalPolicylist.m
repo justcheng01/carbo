@@ -13,7 +13,8 @@
 #import "policyDetails2.h"
 #import "car_imageVC.h"
 #import "Constant.h"
-#define kRefreshTimeInSeconds 5
+#define kRefreshTimeInSeconds 8
+#define khideTimeInSeconds 12
 
 @interface renewalPolicylist ()
 {
@@ -39,6 +40,8 @@
     NSMutableArray *arr_regmark;
     NSMutableArray *arr_resubmit_Flag;
     NSTimer *myTimerName;;
+    NSTimer *hide_labelTimerName;;
+    UILabel *alertlabel;
 }
 @end
 
@@ -102,12 +105,17 @@
 // [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     [indicator startAnimating];
     
-      myTimerName = [NSTimer scheduledTimerWithTimeInterval: kRefreshTimeInSeconds
+    myTimerName  =   [NSTimer scheduledTimerWithTimeInterval: kRefreshTimeInSeconds
                                                    target:self 
                                                  selector:@selector(Refreshcalled) 
                                                  userInfo:nil
                                                   repeats:YES];
     
+//    hide_labelTimerName = [NSTimer scheduledTimerWithTimeInterval: khideTimeInSeconds
+//                                                   target:self
+//                                                 selector:@selector(hidealertlabel)
+//                                                 userInfo:nil
+//                                                  repeats:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -169,13 +177,22 @@ if(response2.length>6)
          NSString *str = [NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
          if([str isEqualToString:@"Fail"])
          {
-             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"No policy available !", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-             [alert show];
+            alertlabel =[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width/2)-75,100 , 150,50)];
+             [alertlabel setTextAlignment:NSTextAlignmentCenter];
+             [alertlabel setText:NSLocalizedString(@"No policy available !", nil) ];
+             [self.view addSubview:alertlabel];
+             [renewaltableview setHidden:YES];
+             
+            //  UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"No policy available !", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+            // [alert show];
          }
          else
          {
-             NSArray *arr=[[NSArray alloc]initWithArray:[jsonObject valueForKey:@"result"]];
+             [alertlabel removeFromSuperview];
              
+             [renewaltableview setHidden:NO];
+             NSArray *arr=[[NSArray alloc]initWithArray:[jsonObject valueForKey:@"result"]];
+
              arr_policy_id   = [[NSMutableArray alloc]init];
              arr_policy_name = [[NSMutableArray alloc]init];
              arr_date        = [[NSMutableArray alloc]init];
@@ -269,7 +286,12 @@ else
 -(void)Refreshcalled
 {
     [self Renewal_list];
-    [renewaltableview reloadData];  
+    [renewaltableview reloadData];
+}
+
+-(void)hidealertlabel
+{
+  [alertlabel removeFromSuperview];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 

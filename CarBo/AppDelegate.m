@@ -18,6 +18,7 @@
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
+// Cleaned
 
 @interface AppDelegate ()
 
@@ -27,8 +28,8 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
- // Override point for customization after application launch.
+ 
+  // Override point for customization after application launch.
   [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
 
@@ -72,6 +73,7 @@ else
     }
     else
     {
+        
     }
     
   return YES;

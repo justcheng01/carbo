@@ -27,7 +27,7 @@
     
     [passwordtext setPlaceholder:NSLocalizedString(@"New Password", nil)];
     [confirmpasswordtext setPlaceholder:NSLocalizedString(@"Confirm Password", nil)];
-      [submit_Password setTitle:NSLocalizedString(@"Update Password", nil) forState:UIControlStateNormal];
+    [submit_Password setTitle:NSLocalizedString(@"Update Password", nil) forState:UIControlStateNormal];
     
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
 
@@ -89,11 +89,11 @@
 {
 
     NSString *userid=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"USERID"]];
-    
+
     BOOL Network=[self Reachability_To_Chechk_Network];
+    
 if(Network) 
 {
-
     if([passwordtext.text isEqualToString: confirmpasswordtext.text])
      {
         
@@ -159,7 +159,7 @@ if(Network)
 //                [alert show];
               
                 NSString  *str1=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
-                
+              
                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str1 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
                 [alert show];
             }

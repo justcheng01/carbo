@@ -25,10 +25,29 @@
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @property (atomic)  UIActivityIndicatorView *indicator;
 
+//Subview External subview for email and mobile number
+@property (strong, nonatomic) IBOutlet UIView *externalSubview;
+@property (weak, nonatomic) IBOutlet UILabel *email_Label;
+@property (weak, nonatomic) IBOutlet UITextField *email_textfield;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *okBtn;
+@property (weak, nonatomic) IBOutlet UITextField *mobile_textfield;
+
+//New External Subview for fetching mobile number
+@property (weak, nonatomic) IBOutlet UILabel      *Nemail_label;
+@property (weak, nonatomic) IBOutlet UITextField *N_mobile_text;
+@property (weak, nonatomic) IBOutlet UIButton *NcancelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *NokBtn;
+@property (strong, nonatomic) IBOutlet UIView *N_externalsubview;
+
+
 -(IBAction)facebookloginButtonClicked:(id)sender;
 -(IBAction)loginButtonClicked:(id)sender;
 -(IBAction)ForgotPassword:(id)sender;
 -(IBAction)RegisterNewUser:(id)sender;
-
+//
+// New External View
+-(IBAction)mcancelcalled:(id)sender;
+-(IBAction)mokcalled:(id)sender;
 @end
 

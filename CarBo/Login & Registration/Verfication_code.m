@@ -103,7 +103,6 @@
         [alert show];
     }
 //  Verify Code Here 
-       
 }
 
 #pragma mark -- Verification code Service

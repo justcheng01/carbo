@@ -242,8 +242,11 @@
 "Excess"="自負額";
 "VerificationCodeInvalid"="無效驗證碼";
 "PDFFileNotAvailable"="PDF文件不可用";
-
-
+"YourDetails"="你的資料";
+"EnterYourPhoneNo"="輸入電話號碼";
+"EnterEmailPhoneNo"="輸入電子郵件和電話號碼";
+"PleaseEnterValidMobileNo"="請輸入有效的電話號碼";
+"EnterDetails"="進入詳細信息";
 ///* 
 //  Localizable.strings
 //  CarBo

@@ -11,7 +11,9 @@
 #import "Reachability.h"
 #import "Constant.h"
 #define kOFFSET_FOR_KEYBOARD 450.0
-#define MAXLENGTH 15
+#define MAXLENGTH 8
+#define MINLENGTH 10
+
 
 
 @interface Register ()
@@ -238,13 +240,13 @@
     {
       [self.view addSubview:pView];
     }
-
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-  [phone resignFirstResponder];
+    [phone resignFirstResponder];
 }
+
 -(void)cancelcalled:(UIButton*)sender
 {
      [pView removeFromSuperview];
@@ -301,110 +303,107 @@
     {
     if(Name.text.length>0 && email.text.length>0 && phone.text.length>0 && password.text.length>0)
   {
-      if([password.text isEqualToString:confirmpassword.text])
-      {
+      NSLog(@"Email Valid  ::  %@",email.text);
+      
       BOOL ValEmail = [self validateEmailWithString:email.text];
-     if(ValEmail==YES)
-     {
-     // NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.12.101/Carboservices/registration_new.php"];
-          
-          NSString *myRequestString = [NSString stringWithFormat:@"%@registration_new.php",kAPIEndpointLatestPath];
-          
-          
-      NSDictionary *userNameDict = @{@"name" : Name.text,
-                                     @"email" : email.text,
-                                     @"phone" : phone.text,
-                                     @"password" : password.text
-                                     };
-      NSError  *error;
-    
-     //NSLog(@"userNameDict  :: %@",userNameDict);
-          
-      NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
-      //  NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.213.88/cakephpProjects/buzz/demofile.php?device_id=%@",deviceID];
       
-      //   http://161.202.18.46/~iwebsolutionz/Cakephpprojects/buzz/
-     
-      // Create Data from request
-      //NEW
-      NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
-      // set Request Type
-      [request2 setHTTPMethod:@"POST"];
-      // Set content-type
-      [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-      // Set Request Body
-      [request2 setHTTPBody:post];
-      
-      // Now send a request and get Response
-      NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
-      // Log Response
-      NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
-      //NSLog(@"Postdata to server :: %@",response2);
-          
-  if(response2.length>0)
-   {
-      NSDictionary *jsonObject=[NSJSONSerialization
-                                JSONObjectWithData:returnData
-                                options:NSJSONReadingMutableLeaves
-                                error:nil];
-     
-      NSString *str=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
-          
-      if([str isEqualToString:@"Success"])
+      if(ValEmail==YES)
       {
-          NSString *str1=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"userid"]];
-          
-          [[NSUserDefaults standardUserDefaults]setObject:str1 forKey:@"USERID"];
-          [[NSUserDefaults standardUserDefaults]setObject:email.text forKey:@"userEmail"];
-          [[NSUserDefaults standardUserDefaults]synchronize];
-          
-//          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Enter Verification Code that is sent to registered Email Id.", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-//          [alert show];
-          
-          NSString *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
-          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-          [alert show];
+          if(phone.text.length==8)
+          {
+              if([password.text isEqualToString:confirmpassword.text])
+              {
+                      NSString *myRequestString = [NSString stringWithFormat:@"%@registration_new.php",kAPIEndpointLatestPath];
+                      // registration_new.php
+                      NSDictionary *userNameDict = @{@"name" : Name.text,
+                                                     @"email" : email.text,
+                                                     @"phone" : phone.text,
+                                                     @"password" : password.text
+                                                     };
+                      NSError  *error;
+                      NSLog(@"userNameDict  :: %@",userNameDict);
 
-          
-          [self performSegueWithIdentifier:@"RTOEV" sender:self];
+                      NSData   *post = [NSJSONSerialization dataWithJSONObject:userNameDict options:0 error:&error];
+                      //  NSString *myRequestString = [NSString stringWithFormat:@"http://74.208.213.88/cakephpProjects/buzz/demofile.php?device_id=%@",deviceID];
+                      //   http://161.202.18.46/~iwebsolutionz/Cakephpprojects/buzz/
+                      
+                      // Create Data from request
+                      //NEW
+                      NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:myRequestString]];
+                      // set Request Type
+                      [request2 setHTTPMethod:@"POST"];
+                      // Set content-type
+                      [request2 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+                      // Set Request Body
+                      [request2 setHTTPBody:post];
+                      
+                      // Now send a request and get Response
+                      NSData *returnData = [NSURLConnection sendSynchronousRequest: request2 returningResponse: nil error: nil];
+                      // Log Response
+                      NSString *response2 = [[NSString alloc]initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+                       NSLog(@"Postdata to server :: %@",response2);
+                      
+                      if(response2.length>0)
+                      {
+                          NSDictionary *jsonObject=[NSJSONSerialization
+                                                    JSONObjectWithData:returnData
+                                                    options:NSJSONReadingMutableLeaves
+                                                    error:nil];
+                          
+                          NSString *str=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_code"]];
+                          
+                          if([str isEqualToString:@"Success"])
+                          {
+                              NSString *str1=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"userid"]];
+                              [[NSUserDefaults standardUserDefaults]setObject:str1 forKey:@"USERID"];
+                              [[NSUserDefaults standardUserDefaults]setObject:email.text forKey:@"userEmail"];
+                              [[NSUserDefaults standardUserDefaults]synchronize];
+                              
+                              NSString *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                              UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                              [alert show];
+                              [self performSegueWithIdentifier:@"RTOEV" sender:self];
+                          }
+                          else
+                          {
+                              NSString *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
+                              UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                              [alert show];
+                              //          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@" " message:str delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                              //          [alert show];
+                          }
+                      }
+                      else
+                      {
+                          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Something went wrong! please try again later.", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                          [alert show];
+                      }
+              }
+              else
+              {
+                  //  NSString *str=@"Please Enter Password Field Properly";
+                  UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Entered Password doesn't match", nil)  delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+                  [alert show];
+              }
+          }
+          else{
+              //  NSString *str=@"Please Enter Password Field Properly";   Please valid mobile number    請輸入有效的電話號碼
+              UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"PleaseEnterValidMobileNo", nil)  delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+              [alert show];
+          }
       }
       else
       {
-          NSString *str11=[NSString stringWithFormat:@"%@",[jsonObject valueForKey:@"response_message"]];
-          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:str11 message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please Enter Valid Email ID", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
           [alert show];
-          
-//          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@" " message:str delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-//          [alert show];
-      }
-              
-          }
-          else
-          {
-              UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Something went wrong! please try again later.", nil) message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-              [alert show];
-          }
-    }
-     else
-     {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Please Enter Valid Email ID", nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-        [alert show]; 
       }
   }
- else
-    {
-        //  NSString *str=@"Please Enter Password Field Properly";
-          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"Entered Password doesn't match", nil)  delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-          [alert show];
-    }                   
-}
 else
   {
-       NSString *str=NSLocalizedString(@"Please enter all fields", nil);
-      
+     //  NSString *str=NSLocalizedString(@"Please enter all fields", nil);
        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"All the fields are mandatory", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-      [alert show];
-}
+       [alert show];
+  }
 }
  else
     {
@@ -413,22 +412,50 @@ else
     }
 }
 
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    NSLog(@"String :: %@",string);
+//    
+////    if(textField==self.confirm_pwd_text)
+////    {
+////        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-@!@#$%^&*():;""{}[]?/,~`"] invertedSet];
+////        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+////        if ([string isEqualToString:@" "] ) {
+////            return NO;
+////        }
+////    }
+////    else if(textField==self.txt_pwd)
+////    {
+////        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-@!@#$%^&*():;""{}[]?/,~`"] invertedSet];
+////        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+////        if ([string isEqualToString:@" "] ) {
+////            return NO;
+////        }
+////    }
+//   if(textField.tag==3)
+//    {
+//        int length = [phone.text length] ;
+//        
+//        if (length >= MAXLENGTH && ![string isEqualToString:@""] && length >= MINLENGTH ) {
+//            textField.text = [textField.text substringToIndex:MAXLENGTH];
+//            return NO;
+//        }
+//    }
+//}
 
 //NEW
 -(BOOL)validateEmailWithString:(NSString*)email
 {   
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    //NEW   NSString *emailRegex = @"([A-Z0-9a-z._%+-]{2,4})+@([A-Za-z0-9.-]{2,4})+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
 
-
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 
 { 
     if([[segue identifier] isEqualToString:@"RTOEV"]) 
-    {
-    }
+    {}
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -437,9 +464,9 @@ else
     {
     int length = [textField.text length] ;
     if (length >= MAXLENGTH && ![string isEqualToString:@""]) {
-        textField.text = [textField.text substringToIndex:MAXLENGTH];
-        return NO;
-    }
+          textField.text = [textField.text substringToIndex:MAXLENGTH];
+          return NO;
+        }
     }
     return YES;
 }
@@ -449,14 +476,11 @@ else
 {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     [reachability startNotifier];
-    
     NetworkStatus status = [reachability currentReachabilityStatus];
-    
     if(status == NotReachable)
     {
         //NSLog(@"Not REachable");
         return NO;
-        //No internet
     }
     else if (status == ReachableViaWiFi)
     {
@@ -476,7 +500,6 @@ else
         return NO;
     }
 }
-
 
 #pragma mark - colour Objects from hex Strings
 

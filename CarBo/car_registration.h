@@ -32,5 +32,5 @@
 @property(strong,nonatomic)UITableView *carTableview;
 @property(strong,nonatomic)UIImageView *imageview;
 + (NSString *)extractNumberFromText:(NSString *)text;
-
+-(BOOL)callToCheck_Parameter_Values;
 @end
