@@ -14,7 +14,7 @@
 #import "emailVerfication_code.h"
 #import "Constant.h"
 #import <Social/Social.h>
-#import "FB_emailVerfication_code.h"
+#import "../FB_emailVerfication_code.h"
 #define MAXLENGTH 8
 @interface LoginVC ()
 {

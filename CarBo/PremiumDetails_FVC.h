@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PassKit/PassKit.h>
 
-@interface PremiumDetails_FVC : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,UINavigationControllerDelegate>
+
+@interface PremiumDetails_FVC : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,UINavigationControllerDelegate,PKPaymentAuthorizationViewControllerDelegate>
 {
 
     UIScrollView *scrollview;
@@ -23,8 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bank_name_text;
 @property (weak, nonatomic) IBOutlet UIImageView *payment_receipt;
 @property (strong, nonatomic) UITableView *banklistTableview;
-@property (strong, nonatomic) IBOutlet UIButton *continueBtn
-;
+@property (strong, nonatomic) IBOutlet UIButton *continueBtn;
 @property (strong, nonatomic) IBOutlet UILabel *heading;
 @property (strong, nonatomic) IBOutlet UILabel *banklabel;
 @property (strong, nonatomic) IBOutlet UILabel *accountlabel;

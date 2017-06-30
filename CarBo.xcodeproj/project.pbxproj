@@ -1437,7 +1437,7 @@
 		6416B8EE1D4238B1009B4A05 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Shirish Vispute";
 				TargetAttributes = {
 					6416B8F51D4238B1009B4A05 = {
@@ -1446,7 +1446,7 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1934,8 +1934,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wing Kwong Cheng (NKW238FKN4)";
@@ -1984,8 +1986,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Wing Kwong Cheng (NKW238FKN4)";
@@ -2148,7 +2152,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carbo.carinsuranceapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29a21f2e-24d2-4ef9-aca5-3a3653d878b2";
+				PROVISIONING_PROFILE = "b6b27ec5-d6ab-4625-8ce7-41bdc3eaae4e";
 				PROVISIONING_PROFILE_SPECIFIER = "Carbo Dev Final";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2289,7 +2293,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carbo.carinsuranceapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29a21f2e-24d2-4ef9-aca5-3a3653d878b2";
+				PROVISIONING_PROFILE = "b6b27ec5-d6ab-4625-8ce7-41bdc3eaae4e";
 				PROVISIONING_PROFILE_SPECIFIER = "Carbo Dev Final";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

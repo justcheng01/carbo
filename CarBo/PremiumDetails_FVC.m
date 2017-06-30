@@ -12,6 +12,7 @@
 #import "Constant.h"
 #import "Reachability.h"
 
+
 @interface PremiumDetails_FVC ()
 {
     NSMutableArray *arr_account_name;
@@ -1191,5 +1192,86 @@ else //Network Loop
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)ApplyPayBtnPressed:(id)sender {
+    // [Crittercism beginTransaction:@"checkout"];
+    
+    if([PKPaymentAuthorizationViewController canMakePayments]) {
+        
+        NSLog(@"Woo! Can make payments!");
+        NSString *premium_amount=feesAmount.text;
+
+        
+        PKPaymentRequest *request = [[PKPaymentRequest alloc] init];
+        
+ 
+        PKPaymentSummaryItem *total = [PKPaymentSummaryItem summaryItemWithLabel:@"Premium Amount"
+                                                                          amount:[NSDecimalNumber decimalNumberWithString:premium_amount]];
+        
+        request.paymentSummaryItems = @[total];
+        request.countryCode = @"HK";
+        request.currencyCode = @"HKD";
+        request.supportedNetworks = @[PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa];
+        request.merchantIdentifier = @"merchant.carbo";
+        request.merchantCapabilities = PKMerchantCapabilityEMV;
+        
+        PKPaymentAuthorizationViewController *paymentPane = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:request];
+        paymentPane.delegate = self;
+        [self presentViewController:paymentPane animated:TRUE completion:nil];
+        
+    } else {
+        NSLog(@"This device cannot make payments");
+    }
+}
+
+- (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller
+                       didAuthorizePayment:(PKPayment *)payment
+                                completion:(void (^)(PKPaymentAuthorizationStatus status))completion
+{
+    NSLog(@"Payment was authorized: %@", payment);
+    
+    // do an async call to the server to complete the payment.
+    // See PKPayment class reference for object parameters that can be passed
+    BOOL asyncSuccessful = FALSE;
+    
+    // When the async call is done, send the callback.
+    // Available cases are:
+    //    PKPaymentAuthorizationStatusSuccess, // Merchant auth'd (or expects to auth) the transaction successfully.
+    //    PKPaymentAuthorizationStatusFailure, // Merchant failed to auth the transaction.
+    //
+    //    PKPaymentAuthorizationStatusInvalidBillingPostalAddress,  // Merchant refuses service to this billing address.
+    //    PKPaymentAuthorizationStatusInvalidShippingPostalAddress, // Merchant refuses service to this shipping address.
+    //    PKPaymentAuthorizationStatusInvalidShippingContact        // Supplied contact information is insufficient.
+    
+    if(asyncSuccessful) {
+        completion(PKPaymentAuthorizationStatusSuccess);
+        
+        // do something to let the user know the status
+        
+        NSLog(@"Payment was successful");
+        
+        //        [Crittercism endTransaction:@"checkout"];
+        
+    } else {
+        completion(PKPaymentAuthorizationStatusFailure);
+        
+        // do something to let the user know the status
+        
+        NSLog(@"Payment was unsuccessful");
+        
+        //        [Crittercism failTransaction:@"checkout"];
+    }
+    
+}
+
+- (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
+{
+    NSLog(@"Finishing payment view controller");
+    
+    // hide the payment window
+    [controller dismissViewControllerAnimated:TRUE completion:nil];
+}
+
+
+
 
 @end
